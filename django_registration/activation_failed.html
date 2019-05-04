@@ -1,0 +1,13 @@
+{% extends "root/main/main.html" %}
+{% load i18n %}
+
+{% block content %}
+<div style="padding-left:2%;padding-right:2%;margin-bottom:1%;margin-top:1%">
+    <div class="alert alert-secondary" role="alert">
+        Activate new user:
+    </div>
+    <div style="margin-left:auto;margin-right:auto">
+        <p>{% trans "Account activation failed" %}</p>
+    </div>
+</div>
+{% endblock %}

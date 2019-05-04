@@ -1,0 +1,17 @@
+{% extends "root/main/main.html" %}
+{% load i18n %}
+{% block content %}
+
+<div style="padding-left:2%;padding-right:2%;margin-bottom:1%;margin-top:1%">
+    <div class="jumbotron bg-light">
+      <h1 class="display-4">Account has been created!</h1>
+      {% trans "BUT you can't login right now! Please go to your mail box to see an activation email." %}
+      <hr class="my-4">
+      <p>Do not forget to:</p>
+        <ul>
+            <li>Check your mail for confirmation and account activation link!</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "root/main/main.html" %}
+{% load i18n %}
+
+{% block content %}
+<div style="padding-left:2%;padding-right:2%;margin-bottom:1%;margin-top:1%">
+    <div class="jumbotron">
+      <h1 class="display-4">Greetings!</h1>
+      <p class="lead">{% trans "Your account is now activated." %}</p>
+      <hr class="my-4">
+      <p>Please now do following:</p>
+        <ul>
+            <li>Login.</li>
+            <li>Ask admin to give you rights for test execution.</li>
+            <li>Ask admin to add your BMC ADPROD account name to users table to allow test reports in user space</li>
+        </ul>
+      <p class="lead">
+        <a class="btn btn-success btn-lg" href="{% url 'login' %}" role="button">Login now</a>
+        <a class="btn btn-secondary btn-lg" href="#" role="button">Go to user space</a>
+      </p>
+    </div>
+</div>
+{% endblock %}

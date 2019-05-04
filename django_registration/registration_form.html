@@ -1,0 +1,76 @@
+{% extends "root/main/main.html" %}
+{% load i18n %}
+{% block page_title %}
+Registration
+{% endblock %}
+{% block content %}
+{% load static %}
+{% if user_is_authenticated %}
+    <!-- When user is logged in. Redirect to info page -->
+    <div style="padding-left:2%;padding-right:2%;margin-bottom:5px;margin-top:5px">
+        <div class="alert alert-warning" role="alert">
+            You're already logged in as {{ username }}, isn't you -> %CHANGE_USER%
+        </div>
+    </div>
+{% else %}
+    <!-- Login form request. -->
+    <!-- Registration from render. -->
+    <div style="padding-left:2%;padding-right:2%;margin-bottom:5px;margin-top:5px">
+        <div class="alert alert-warning" role="alert">
+            Please log in if you already registered, or create new user via registration form.
+        </div>
+{#        <form method="post" action="">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#            <table>#}
+{#              {{ form.as_table }}#}
+{#            </table>#}
+{#            <input type="submit" value="{% trans 'Submit' %}" />#}
+{#        </form>#}
+{# NOTE: Help - https://docs.djangoproject.com/en/2.1/topics/forms/#}
+        <form method="post" action="">{% csrf_token %}
+            <div class="form-group row fieldWrapper">
+                {{ form.non_field_errors }}
+                <label for="{{ form.username.id_for_label }}" class="col-sm-2 col-form-label">User name</label>
+                <div class="col-sm-10">
+                    {{ form.username }}
+                    <div class="text-warning">{{ form.username.errors }}</div>
+                    <small id="emailHelp" class="form-text text-muted">{{ form.username.help_text|safe }}</small>
+                </div>
+            </div>
+            <div class="form-group row fieldWrapper">
+                <label for="{{ form.email.id_for_label }}" class="col-sm-2 col-form-label">Email address</label>
+                <div class="col-sm-10">
+                    {{ form.email }}
+                    <div class="text-warning">{{ form.email.errors }}</div>
+                    <small id="emailHelp" class="form-text text-muted">Please use actual mail address. Site will send you emails.</small>
+                </div>
+            </div>
+            <div class="form-group row fieldWrapper">
+                <label for="{{ form.password1.id_for_label }}" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    {{ form.password1 }}
+                    <div class="text-warning">{{ form.password1.errors }}</div>
+                    <small id="passHelp" class="form-text text-muted">Custom password. Make new!</small>
+                    <small id="passHelp" class="form-text text-muted">{{ form.password1.help_text|safe }}</small>
+                </div>
+            </div>
+            <div class="form-group row fieldWrapper">
+                <label for="{{ form.password2.id_for_label }}" class="col-sm-2 col-form-label">Password confirmation:</label>
+                <div class="col-sm-10">
+                    {{ form.password2 }}
+                    <div class="text-warning">{{ form.password2.errors }}</div>
+                    <small id="passHelp" class="form-text text-muted">Repeat your password.</small>
+                    <small id="emailHelp" class="form-text text-muted">{{ form.password2.help_text|safe }}</small>
+                </div>
+            </div>
+            {% if form.non_field_errors %}
+                <div class="fieldWrapper">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}
